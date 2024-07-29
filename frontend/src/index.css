@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/30
+   text-white font-semibold rounded-lg;
+  }
+
+  .form-control {
+    @apply rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none;
+  }
+
+  .form-file-label {
+    @apply flex justify-center w-full h-32 px-4 transition bg-gray-700 border-2 border-gray-800 border-dashed rounded-md appearance-none cursor-pointer hover:border-blue-500 focus:outline-none;
+  }
+
+  .form-group {
+    @apply flex flex-col text-gray-400 py-2;
+  }
+}
+
+.loader {
+	border-top-color: #3498db;
+	-webkit-animation: spinner 1.5s linear infinite;
+	animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: teal-700 gray-600;
+  }
+
+  *::-webkit-scrollbar {
+	width: 15px;
+  }
+  
+  *::-webkit-scrollbar-track {
+	background: #111827;
+	border-radius: 5px;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+	background-color: #14b8a6;
+	border-radius: 14px;
+	border: 3px solid #14b8a6;
+  }

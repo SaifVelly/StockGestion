@@ -72,13 +72,11 @@ const Login = () => {
                         <input className='form-control' type="text" name="email" value={email} onChange={handleInputChange} required/>
                     </div>
                     <div className='form-group'>
-                        <label>Password</label>
+                        <label>Mot de pass</label>
                         <input className='form-control' type="password" name="password" value={password} onChange={handleInputChange} required/>
                     </div>
-                    <div className='flex justify-between text-gray-400 py-2'>
-                        <p>Forgot Password?</p>
-                    </div>
-                    <button type="button" className='btn-primary' onClick={login}>Sign In</button>
+                    
+                    <button type="button" className='btn-primary' onClick={login}>Se connecter</button>
                 </form>
             </div>   
         </div>

@@ -83,14 +83,14 @@ const Register = () => {
             </div>
             <div className='bg-gray-800 flex flex-col justify-center'>
                 <form className='max-w-[700px] w-full mx-auto bg-gray-900 p-8 px-8 rounded-lg' onSubmit={register}>
-                    <h2 className='text-4xl dark:text-white font-bold text-center'>Register</h2>
+                    <h2 className='text-4xl dark:text-white font-bold text-center'>Créer un compte</h2>
                     <div className='grid grid-cols-1 sm:grid-cols-2 w-full gap-x-2'>
                         <div className='form-group'>
-                            <label>First Name</label>
+                            <label>Nom</label>
                             <input className='form-control' type="text" name="firstName" onChange={handleInputChange} value={firstName} required/>
                         </div>
                         <div className='form-group'>
-                            <label>Last Name</label>
+                            <label>Prénom</label>
                             <input className='form-control' type="text" name="lastName" onChange={handleInputChange} value={lastName} required/>
                         </div>
                     </div>
@@ -98,22 +98,19 @@ const Register = () => {
                         <label>Email</label>
                         <input className='form-control' type="text" name="email" onChange={handleInputChange} value={email} required/>
                     </div>
-                    <div className='form-group'>
-                        <label>Phone</label>
-                        <input className='form-control' type="text" size='14' placeholder='+880-XXX-XXXX-XXX' name="phone" onChange={handleInputChange} value={phone} required/>
-                    </div>
+                    
                     <div className='grid grid-cols-1 sm:grid-cols-2 w-full gap-x-2'>
                         <div className='form-group'>
-                            <label>Password</label>
+                            <label>Mot de pass</label>
                             <input className='form-control' type="password" name="password" onChange={handleInputChange} value={password} required/>
                         </div>
                         <div className='form-group'>
-                            <label>Confirm Password</label>
+                            <label>Confirmer le mot de pass</label>
                             <input className='form-control' type="password" name="confirmPassword" onChange={handleInputChange} value={confirmPassword} required/>
                         </div>
                     </div>
                     <div className='form-group'>
-                        <label>Bio</label>
+                        <label>Que gère ce compte ?</label>
                         <textarea className='form-control' type="text" name="bio" onChange={handleInputChange} value={bio}/>
                     </div>
                     {/* <div className="form-group">
@@ -132,7 +129,7 @@ const Register = () => {
                             <input type="file" name="photo" className="hidden" onChange={handleInputChange}/>
                         </label>
                     </div> */}
-                    <button className='btn-primary' type="submit">Register</button>
+                    <button className='btn-primary' type="submit">Créer le compte</button>
                 </form>
             </div>   
         </div>

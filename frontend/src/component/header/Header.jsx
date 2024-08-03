@@ -37,21 +37,21 @@ const Header = () => {
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                             <li>
                                 <Link to={`/user-profile`}>
-                                    <span className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile Settings</span>
+                                    <span className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres du profile</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link to={`/change-password`}>
-                                    <span className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Change Password</span>
+                                    <span className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Changer le mot de pass</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link to={`/edit-profile`}>
-                                    <span className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Profile</span>
+                                    <span className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Modifier le Profile</span>
                                 </Link>
                             </li>
                             <li>
-                                <span onClick={logout} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</span>
+                                <span onClick={logout} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Se déconnecter</span>
                             </li>
                         </ul>
                     </div>

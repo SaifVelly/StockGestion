@@ -19,9 +19,9 @@ const ProductDetails = () => {
 
     const stockStatus = (quantity) => {
         if(quantity > 0) {
-            return <span className='bg-green-600 rounded-lg dark: text-white px-2'>In Stock</span>
+            return <span className='bg-green-600 rounded-lg dark: text-white px-2'>Dans le Stock</span>
         }
-        return <span className='bg-red-600 rounded-lg dark: text-white px-2'>Out of Stock</span>
+        return <span className='bg-red-600 rounded-lg dark: text-white px-2'>Stock fini</span>
     }
 
     const onBackClick = () => {
@@ -43,20 +43,20 @@ const ProductDetails = () => {
         {isLoading && <Loader/>}
         <div className='bg-gray-800 flex flex-col justify-center'>
             <form className='max-w-[1000px] w-full mx-auto bg-gray-900 p-8 m-5 rounded-lg flex flex-col items-center justify-center'>
-                <h2 className='text-4xl dark:text-white font-bold text-center'>Product Details</h2>
+                <h2 className='text-4xl dark:text-white font-bold text-center'>Les détails du produit</h2>
                 <div className="form-group">
                     <div>
                         {product?.image ? (
                             <img className="max-wdith: 400px max-w-screen-sm mt-5" src={product?.image?.filePath} alt="Product"/>
                         ) : (
-                            <p>No Image set for this product</p>
+                            <p>Pas d'image pour ce produit</p>
                         )}
                     </div>
                 </div>
-                <h4 className="text-2xl text-gray-300 font-bold py-5">Product Availability: {stockStatus(product?.quantity)}</h4>
+                <h4 className="text-2xl text-gray-300 font-bold py-5">Produit valable ?: {stockStatus(product?.quantity)}</h4>
                 <div className="text-gray-300">
                     <p className="text-lg space-x-2 py-3">
-                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Name:</span>
+                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Nom:</span>
                         <span>{product?.name}</span>
                     </p>
                     <p className="text-lg space-x-2 py-3">
@@ -64,21 +64,21 @@ const ProductDetails = () => {
                         <span>{product?.sku}</span>
                     </p>
                     <p className="text-lg space-x-2 py-3">
-                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Category:</span>
+                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Catégorie:</span>
                         <span>{product?.category}</span>
                     </p>
                     <p className="text-lg space-x-2 py-3">
-                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Price:</span>
-                        <span>{'$'}{(product?.price*1).toLocaleString('en-US')}</span>
+                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Prix:</span>
+                        <span>{(product?.price*1).toLocaleString('en-US')}{' dh'}</span>
                     </p>
                     <p className="text-lg space-x-2 py-3">
-                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Quantity in stock:</span>
+                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Quantité dans le stock:</span>
                         <span>{product?.quantity}{' kg'}</span>
                     </p>
                     
                     <hr/>
                     <div className='form-group pb-5 text-lg text-gray-300'>
-                        <label className="font-bold">Description:</label>
+                        <label className="font-bold">Déscription:</label>
                         <div dangerouslySetInnerHTML={{
                             __html: DOMPurify.sanitize(product?.description)
                         }}/>
@@ -88,7 +88,7 @@ const ProductDetails = () => {
                     <br/>
                     <code>Last Updated:  {product?.updatedAt.toLocaleString("en-US")}</code>
                 </div>
-                <button type="button" onClick={onBackClick} className='btn-primary w-1/6 float-right'>Back</button>
+                <button type="button" onClick={onBackClick} className='btn-primary w-1/6 float-right'>Retour</button>
             </form>
         </div>
     </div>

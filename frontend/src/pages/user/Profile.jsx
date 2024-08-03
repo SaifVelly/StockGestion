@@ -42,24 +42,21 @@ const Profile = () => {
                 </div>
                 <div className="text-gray-300">
                     <p className="text-lg space-x-2 py-3">
-                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Name:</span>
+                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Nom:</span>
                         <span>{profile?.name}</span>
                     </p>
                     <p className="text-lg space-x-2 py-3">
                         <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Email:</span>
                         <span>{profile?.email}</span>
                     </p>
+                    
                     <p className="text-lg space-x-2 py-3">
-                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Phone:</span>
-                        <span>{profile?.phone}</span>
-                    </p>
-                    <p className="text-lg space-x-2 py-3">
-                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Bio:</span>
+                        <span className="bg-teal-600 rounded-lg px-2 dark:text-white">Que gère ce compte ?:</span>
                         <span>{profile?.bio}</span>
                     </p>
                 </div>
                 <button type="button" onClick={editClick}
-                className='btn-primary w-1/6 float-right'>Edit Profile</button>
+                className='btn-primary w-1/6 float-right'>Modifier le profile</button>
             </form>
         </div>
     </div>

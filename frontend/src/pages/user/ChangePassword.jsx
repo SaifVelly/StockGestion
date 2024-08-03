@@ -46,20 +46,20 @@ const ChangePassword = () => {
         {isLoading && <Loader/>}
             <div className='bg-gray-800 flex flex-col justify-center h-full'>
                 <form className='max-w-[700px] w-full mx-auto bg-gray-900 p-8 m-5 rounded-lg'>
-                    <h2 className='text-4xl dark:text-white font-bold text-center'>Password Settings</h2>
+                    <h2 className='text-4xl dark:text-white font-bold text-center'>Paramètres du mot de pass</h2>
                     <div className='form-group'>
-                        <label>Old Password</label>
+                        <label>Mot de pass ancien</label>
                         <input className='form-control' type="password" name="oldPassword" value={oldPassword} onChange={handleInputChange} required/>
                     </div>
                     <div className='form-group'>
-                        <label>New Password</label>
+                        <label>Nouveau mot de pass</label>
                         <input className='form-control' type="password" name="password" value={password} onChange={handleInputChange} required/>
                     </div>
                     <div className='form-group'>
-                        <label>Confirm Password</label>
+                        <label>Confirmer le mot de pass</label>
                         <input className='form-control' type="password" name="confirmPassword" value={confirmPassword} onChange={handleInputChange} required/>
                     </div>
-                    <button type="button" onClick={changePass}  className='btn-primary'>Change Password</button> 
+                    <button type="button" onClick={changePass}  className='btn-primary'>Changer le mot de pass</button> 
                 </form>
             </div>
     </div>

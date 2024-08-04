@@ -24,11 +24,11 @@ const ResetPassword = () => {
 
     const reset = async () => {
         if(password !== confirmPassword){
-            return toast.error("Passwords does not match")
+            return toast.error("Les mots de passe ne sont pas les memes")
         }
 
         if(password.legnth < 6){
-            return toast.error("Passwords must be upto 6 characters")
+            return toast.error("Le mot de passe doit comporter au moins 6 caractères")
         }
 
         const userData = {

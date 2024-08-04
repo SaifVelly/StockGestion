@@ -13,7 +13,6 @@ const dummy = {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
     password: "",
     confirmPassword: "",
     bio: "",
@@ -26,7 +25,7 @@ const Register = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState(dummy);
-    const { firstName, lastName, email, password, phone, confirmPassword, bio /*, photo*/ } = formData;
+    const { firstName, lastName, email, password, confirmPassword, bio /*, photo*/ } = formData;
 
     const handleInputChange = (e) => {
         const { name, value /*, files*/ } = e.target;
@@ -36,24 +35,24 @@ const Register = () => {
     const register = async (e) => {
         e.preventDefault();
         if(!firstName || !lastName || !email || !password){
-            return toast.error("All fields are required");
+            return toast.error("Tous les champs sont obligatoires");
         }
 
         if(password !== confirmPassword){
-            return toast.error("Passwords do not match");
+            return toast.error("Les mots de passe ne sont pas les memes");
         }
 
         if(password.length < 6){
-            return toast.error("Password must be at least 6 characters");
+            return toast.error("Le mot de passe doit comporter au moins 6 caractères");
         }
 
         if(!validateEmail(email)){
-            return toast.error("Please enter a valid email");
+            return toast.error("Veuillez entrer une adresse e-mail valide");
         }
 
         const userData = {
             name: `${firstName} ${lastName}`,
-            email, password, phone, bio /*, photo */
+            email, password, bio /*, photo */
         }
 
         setIsLoading(true);
@@ -69,7 +68,7 @@ const Register = () => {
         } catch(error) {
             setIsLoading(false);
             console.log(error.message);
-            toast.error("Registration failed, please try again");
+            toast.error("Inscription a échoué, veuillez réessayer");
         }
 
         console.log(formData);

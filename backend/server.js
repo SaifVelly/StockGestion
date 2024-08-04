@@ -38,7 +38,7 @@ app.use('/api/contact-us', contactRoute);
 //Error Middleware
 app.use(errorHandler);
 
-const port = process.env.PORT;
+const port = process.env.POR || 3000;
 
 dbConnect();
 

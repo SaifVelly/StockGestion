@@ -74,8 +74,8 @@ const AddProduct = () => {
                 handleInputChange={handleInputChange}
                 handleImageChange={handleImageChange}
                 saveProduct={saveProduct}
-                title="Add Product"
-                buttonText="Add Product"
+                title="Ajouter produit"
+                buttonText="Ajouter produit"
                 />
             </div>
     </div>

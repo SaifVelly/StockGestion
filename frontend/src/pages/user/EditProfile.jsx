@@ -18,7 +18,6 @@ const EditProfile = () => {
     const dummy = {
         name: user?.name,
         email: user?.email,
-        phone: user?.phone,
         bio: user?.bio,
         photo: user?.photo
     }
@@ -80,7 +79,6 @@ const EditProfile = () => {
                 
                 const formData = {
                     name: profile.name,
-                    phono: profile.phone,
                     bio: profile.bio,
                     photo: profileImage ? imgUrl : profile.photo,
                 }
@@ -107,11 +105,7 @@ const EditProfile = () => {
             <div className='bg-gray-800 flex flex-col justify-center'>
                 <form className='max-w-[1000px] w-full mx-auto bg-gray-900 p-8 m-5 rounded-lg'>
                     <h2 className='text-4xl dark:text-white font-bold text-center'>Modifier le profile</h2>
-                    <div className="form-group">      
-                        <img onClick={imageOnClick} className="m-auto max-h-[300px] mt-5 rounded-full" src={previewImage ? previewImage : profile?.photo} alt="Profile"/>
-                        <input ref={uploadRef} onChange={handleImageChange} type="file" name="photo" className="hidden"/>
-                        <code className="m-auto">Cliquez sur l'image pour la changer.</code>
-                    </div>
+                    
                     <div className='form-group'>
                         <label>Nom complet</label>
                         <input className='form-control' type="text" name="name" onChange={handleInputChange} value={profile?.name} required/>

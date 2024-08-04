@@ -29,11 +29,11 @@ const Login = () => {
     
     const login = async () => {
         if(!email || !password) {
-            return toast.error("All fields are required")
+            return toast.error("Tous les champs sont obligatoires")
         }
 
         if(!validateEmail(email)){
-            return toast.error("Please enter a valid email")
+            return toast.error("Veuillez entrer une adresse e-mail valide")
         }
 
         const userData = {

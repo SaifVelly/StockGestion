@@ -15,8 +15,8 @@ const Sidebar = ({children}) => {
 
     const menus = [
         { name: "Dashboard", link:"/dashboard", icon: RxDashboard},
-        { name: "Add Product", link:"/add-product", icon: MdLibraryAdd},
-        { name: "Account", link:"/user-profile", icon: TfiBarChart},
+        { name: "Ajouter un produit", link:"/add-product", icon: MdLibraryAdd},
+        { name: "Copmte", link:"/user-profile", icon: TfiBarChart},
     ]
     return (
             <div className={`${open ? "w-72" : "w-16"} duration-300 min-h-screen bg-gray-900 text-gray-100 px-4`}>

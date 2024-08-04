@@ -7,7 +7,7 @@ const ProductForm = ({ product, description, setDescription, handleInputChange, 
     <form className='max-w-[800px] w-full mx-auto bg-gray-800 p-8 m-5 rounded-lg shadow-lg'>
       <h2 className='text-4xl text-white font-bold text-center mb-6'>{title}</h2>
       <div className='form-group mb-4'>
-        <label className='block text-gray-300 mb-2'>Product Name</label>
+        <label className='block text-gray-300 mb-2'>Nom du produit</label>
         <input
           className='form-control w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500'
           type="text"
@@ -18,7 +18,7 @@ const ProductForm = ({ product, description, setDescription, handleInputChange, 
         />
       </div>
       <div className='form-group mb-4'>
-        <label className='block text-gray-300 mb-2'>Product Category</label>
+        <label className='block text-gray-300 mb-2'>Catégorie du produit</label>
         <input
           className='form-control w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500'
           type="text"
@@ -29,7 +29,7 @@ const ProductForm = ({ product, description, setDescription, handleInputChange, 
         />
       </div>
       <div className='form-group mb-4'>
-        <label className='block text-gray-300 mb-2'>Product Price</label>
+        <label className='block text-gray-300 mb-2'>Prix du produit</label>
         <input
           className='form-control w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500'
           type="text"
@@ -40,7 +40,7 @@ const ProductForm = ({ product, description, setDescription, handleInputChange, 
         />
       </div>
       <div className='form-group mb-4'>
-        <label className='block text-gray-300 mb-2'>Product Quantity</label>
+        <label className='block text-gray-300 mb-2'>Quantité du produit</label>
         <input
           className='form-control w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500'
           type="text"
@@ -51,7 +51,7 @@ const ProductForm = ({ product, description, setDescription, handleInputChange, 
         />
       </div>
       <div className='form-group mb-6'>
-        <label className='block text-gray-300 mb-2'>Product Description</label>
+        <label className='block text-gray-300 mb-2'>Déscription du produit</label>
         <ReactQuill
           theme="snow"
           value={description}

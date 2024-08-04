@@ -11,17 +11,17 @@ const generateToken = (id) => {
 }
 
 const registerUser = asyncHandler ( async (req, res) => {
-    const {name, email, phone, password, bio, photo} = req.body;
+    const {name, email, password, bio, photo} = req.body;
 
     //Validation
-    if(!name || !email || !password || !phone){
+    if(!name || !email || !password){
         res.status(400);
-        throw new Error("Please fill in all required fields")
+        throw new Error("Veuillez remplir tous les champs obligatoires")
     }
 
     if(password.length < 6){
         res.status(400);
-        throw new Error("Password must be up to 6 characters")
+        throw new Error("Le mot de passe doit comporter au moins 6 caractères")
     }
 
     // Check if user email already exists
@@ -29,14 +29,13 @@ const registerUser = asyncHandler ( async (req, res) => {
 
     if(userExists){
         res.status(400);
-        throw new Error("Email has already been used")
+        throw new Error("L’adresse e-mail a déjà été utilisée")
     }
 
     //create new user
     const user = await User.create({
         name,
         email,
-        phone,
         password,
         bio,
         photo,
@@ -56,13 +55,13 @@ const registerUser = asyncHandler ( async (req, res) => {
 
 
     if(user){
-        const { _id, name, email, photo, phone, bio } = user;
+        const { _id, name, email, photo, bio } = user;
         res.status(201).json({
-            _id, name, email, photo, phone, bio
+            _id, name, email, photo, bio
         })
     } else {
         res.status(400);
-        throw new Error("Invalid user data")
+        throw new Error("Données utilisateur invalides")
     }
 
 })
@@ -75,7 +74,7 @@ const loginUser = asyncHandler( async (req, res) => {
     //Validation Request
     if(!email || !password) {
         res.status(400);
-        throw new Error("Please add email and password");
+        throw new Error("Veuillez ajouter une adresse e-mail et un mot de passe");
     }   
 
     //Check if user exists
@@ -83,7 +82,7 @@ const loginUser = asyncHandler( async (req, res) => {
 
     if(!user) {
         res.status(400);
-        throw new Error("User not found. Please sign up");
+        throw new Error("Utilisateur introuvable. Veuillez vous inscrire");
     }
     
     // check if password is correct
@@ -102,13 +101,13 @@ const loginUser = asyncHandler( async (req, res) => {
       });
 
     if(user && passwordIsCorrect) {
-        const { _id, name, email, photo, phone, bio } = user;
+        const { _id, name, email, photo, bio } = user;
         res.status(200).json({
-            _id, name, email, photo, phone, bio, token
+            _id, name, email, photo, bio, token
         })
     } else {
         res.status(400);
-        throw new Error("Invalid email or password");
+        throw new Error("Adresse e-mail ou mot de passe invalide");
     }
 })
 
@@ -123,20 +122,20 @@ const logoutUser = asyncHandler(async (req, res) => {
         secure: true
     });
     
-    return res.status(200).json({ message: 'Successfully Logged out'});
+    return res.status(200).json({ message: 'Déconnexion réussie'});
 })
 
 const getUser = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
 
     if(user) {
-        const { _id, name, email, photo, phone, bio } = user;
+        const { _id, name, email, photo, bio } = user;
         res.status(200).json({
-            _id, name, email, photo, phone, bio
+            _id, name, email, photo, bio
         })
     } else {
         res.status(400);
-        throw new Error("User not found");
+        throw new Error("Utilisateur introuvable");
     }
 })
 
@@ -157,10 +156,9 @@ const updateUser = asyncHandler(async (req,res) => {
     const user  = await User.findById(req.user._id);
 
     if (user) {
-        const { name, email, photo, phone, bio } = user;
+        const { name, email, photo, bio } = user;
         user. email = email;
         user.name = req.body.name || name;
-        user.phone = req.body.phone || phone;
         user.bio = req.body.bio || bio;
         user.photo = req.body.photo || photo;
 
@@ -171,12 +169,11 @@ const updateUser = asyncHandler(async (req,res) => {
             name: updatedUser.name,
             email: updatedUser.email,
             photo: updatedUser.photo,
-            phone: updatedUser.phone,
             bio: updatedUser.bio
         })
     } else {
         res.status(404);
-        throw new Error("User not found")
+        throw new Error("Utilisateur introuvable")
     }
 })
 
@@ -186,13 +183,13 @@ const changePassword = asyncHandler(async(req,res) => {
     const {oldPassword, password} = req.body;
     if(!user) {
         res.status(400);
-        throw new Error("User not found. Please signup");
+        throw new Error("Utilisateur introuvable. Veuillez vous inscrire");
     }
     //Validate
 
     if(!oldPassword || !password) {
         res.status(400);
-        throw new Error("Please add old and new password");
+        throw new Error("Veuillez ajouter ancien et le nouveau mot de passe");
     }
 
     const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
@@ -200,10 +197,11 @@ const changePassword = asyncHandler(async(req,res) => {
     if(user && passwordIsCorrect) {
         user.password = password;
         await user.save();
-        res.status(200).send("Password changed successfully")
+        res.status(200).send("Le mot de passe a été changé avec succès");
+        
     } else {
         res.status(400);
-        throw new Error("Old Password is incorrect");
+        throw new Error("Ancien mot de passe est incorrect");
     }
 })
 
@@ -213,7 +211,7 @@ const forgetPassword = asyncHandler(async (req,res) => {
 
     if(!user) {
         res.status(404);
-        throw new Error("User does not exist.")
+        throw new Error("Utilisateur introuvable.")
     }
 
     // Delete token if exists
@@ -290,7 +288,7 @@ const resetPassword = asyncHandler(async(req, res) => {
     user.password = password;
     user.save();
 
-    res.status(200).json({ message: "Password reset successful, Please login with new password"});
+    res.status(200).json({ message: "Réinitialisation du mot de passe réussie. Veuillez vous connecter avec le nouveau mot de passe"});
 
 })
 

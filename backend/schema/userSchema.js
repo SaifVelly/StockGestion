@@ -27,11 +27,7 @@ const userSchema = mongoose.Schema({
         required: [true, "Please add a photo"],
         default: "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
      },
-     phone: {
-        type: String,
-        required: [true, "Please add a phone number"],
-        default: "+880"
-     },
+
      bio: {
         type: String,
         maxLength: [250, "Bio must not be more than 250 characters"],

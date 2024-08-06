@@ -47,8 +47,10 @@ const registerUser = asyncHandler ( async (req, res) => {
     // Send HTTP-Only-Cookie
     res.cookie("token", token,{
         path: '/',
+        httpOnly: true,
         expires: new Date(Date.now() + 1000 * 86400) , // 1 day
         sameSite: "none",
+        secure: true
     });
 
 
@@ -92,8 +94,10 @@ const loginUser = asyncHandler( async (req, res) => {
       // Send HTTP-Only-Cookie
       res.cookie("token", token,{
           path: '/',
+          httpOnly: true,
           expires: new Date(Date.now() + 1000 * 86400) , // 1 day
           sameSite: "none",
+          secure: true
       });
 
     if(user && passwordIsCorrect) {
@@ -112,8 +116,10 @@ const loginUser = asyncHandler( async (req, res) => {
 const logoutUser = asyncHandler(async (req, res) => {
     res.cookie("token", "",{
         path: '/',
+        httpOnly: true,
         expires: new Date(0) , // 1 day
         sameSite: "none",
+        secure: true
     });
     
     return res.status(200).json({ message: 'Déconnexion réussie'});

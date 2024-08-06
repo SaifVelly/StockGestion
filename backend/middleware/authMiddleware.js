@@ -4,20 +4,18 @@ const jwt = require('jsonwebtoken');
 
 const authorization = asyncHandler(async (req, res, next) => {
   try {
-    // Prioritize token from cookies for compatibility
-    let token = req.cookies.token;
+    // Check for token in authorization header
+    const authHeader = req.headers.authorization;
 
-    // If cookie token is not found, check for token in authorization header
-    if (!token) {
-      const bearerHeader = req.headers['authorization'];
-      if (bearerHeader) {
-        token = bearerHeader.split(' ')[1];
-      }
-    }
+    let token;
 
-    if (!token) {
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      // Extract token from the header
+      token = authHeader.split(' ')[1];
+    } else {
+      // No token provided in the header
       res.status(401);
-      throw new Error("Not authorized, please login");
+      throw new Error("Not authorized, please provide token");
     }
 
     // Verify Token
@@ -35,7 +33,7 @@ const authorization = asyncHandler(async (req, res, next) => {
 
   } catch (error) {
     res.status(401);
-    throw new Error("Not authorized, please login"); 
+    throw new Error("Not authorized, invalid or missing token"); 
   }
 });
 

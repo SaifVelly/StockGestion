@@ -4,36 +4,47 @@ const jwt = require('jsonwebtoken');
 
 const authorization = asyncHandler(async (req, res, next) => {
   try {
-    // Check for token in authorization header
+    // Extract token from headers
     const authHeader = req.headers.authorization;
+    const customHeader = req.headers['x-custom-token'];
 
     let token;
 
+    // Prioritize JWT token from Authorization header
     if (authHeader && authHeader.startsWith('Bearer ')) {
-      // Extract token from the header
       token = authHeader.split(' ')[1];
+    } else if (customHeader) { // Check for custom token if no JWT found
+      token = customHeader;
     } else {
-      // No token provided in the header
       res.status(401);
-      throw new Error("Not authorized, please provide token");
+      throw new Error('No token provided');
     }
 
-    // Verify Token
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
+    // Verify token based on its type
+    let verified;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      verified = jwt.verify(token, process.env.JWT_SECRET);
+    } else {
+      // Replace with your custom token verification logic
+      verified = verifyCustomToken(token);
+    }
 
-    const user = await User.findById(verified.id).select("-password");
+    // Extract user information from verified token (assuming verified contains user ID)
+    const userId = verified.id;
+
+    // Find user in database
+    const user = await User.findById(userId).select('-password');
 
     if (!user) {
       res.status(401);
-      throw new Error("User not found");
+      throw new Error('User not found');
     }
 
     req.user = user;
     next();
-
   } catch (error) {
     res.status(401);
-    throw new Error("Not authorized, invalid or missing token"); 
+    throw new Error('Not authorized, invalid or missing token');
   }
 });
 
